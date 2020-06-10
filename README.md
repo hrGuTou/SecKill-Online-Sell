@@ -1,6 +1,10 @@
 # SecKillProject
 Backend Restful API simulates handling high concurrent QPS by using multithreading and caching
 
+## Project Status
+Under development
+- Completed: User management
+
 ## Tech Stack
 Springboot + Redis + RabbitMQ + MySQL
 
