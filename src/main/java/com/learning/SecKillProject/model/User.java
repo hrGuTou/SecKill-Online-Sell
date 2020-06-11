@@ -1,13 +1,13 @@
 package com.learning.SecKillProject.model;
 
 public class User {
-    private Integer userId;
+    private Integer user_id;
     private String nickname;
     private String password;
    // private Date lastLoginDate;
 
-    public void setUserId(Integer userId){
-        this.userId = userId;
+    public void setUserId(Integer user_id){
+        this.user_id = user_id;
     }
 
     public void setNickname(String nickname){
@@ -21,7 +21,7 @@ public class User {
 
 
     public Integer getUserId(){
-        return userId;
+        return user_id;
     }
 
     public String getNickname(){

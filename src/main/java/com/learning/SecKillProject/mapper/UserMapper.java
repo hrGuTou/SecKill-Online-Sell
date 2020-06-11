@@ -10,10 +10,10 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserMapper {
 
-    @Insert("INSERT INTO sk_user(userId, nickname, password) VALUES (#{userId}, #{nickname}, #{password})")
+    @Insert("INSERT INTO user(user_id, nickname, password) VALUES (#{user_id}, #{nickname}, #{password})")
     void add(User user);
 
-    @Select("select * from sk_user where userId = #{userId}")
-    User getById(@Param("userId")int userId);
+    @Select("select * from user where user_id = #{user_id}")
+    User getById(@Param("user_id")int user_id);
 
 }

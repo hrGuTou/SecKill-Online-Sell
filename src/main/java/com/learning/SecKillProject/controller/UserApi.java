@@ -30,9 +30,4 @@ public class UserApi {
         userService.add(user);
         return ResponseEntity.ok(HttpStatus.OK);
     }
-
-
-
-
-
 }
