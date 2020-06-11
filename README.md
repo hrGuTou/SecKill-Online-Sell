@@ -4,6 +4,7 @@ Backend Restful API simulates handling high concurrent QPS by using multithreadi
 ## Project Status
 Under development
 - Completed: User management
+- Completed: Order service (single thread)
 
 ## Tech Stack
 Springboot + Redis + RabbitMQ + MySQL
