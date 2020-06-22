@@ -1,6 +1,8 @@
 package com.learning.SecKillProject.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private Integer user_id;
     private String nickname;
     private String password;

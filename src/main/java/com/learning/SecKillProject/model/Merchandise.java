@@ -1,6 +1,8 @@
 package com.learning.SecKillProject.model;
 
-public class Merchandise {
+import java.io.Serializable;
+
+public class Merchandise implements Serializable {
     private int merchandise_id;
     private String merchandise_name;
     private String merchandise_img;

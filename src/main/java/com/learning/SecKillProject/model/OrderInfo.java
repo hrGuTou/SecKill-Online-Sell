@@ -1,8 +1,9 @@
 package com.learning.SecKillProject.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OrderInfo {
+public class OrderInfo implements Serializable {
     private int order_id;
     private int user_id;
     private int merchandise_id;

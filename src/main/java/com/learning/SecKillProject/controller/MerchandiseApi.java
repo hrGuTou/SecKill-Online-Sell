@@ -23,9 +23,16 @@ public class MerchandiseApi {
 
     @GetMapping("/all")
     public Object allMerchandises(){
+        merchandiseService.importToRedis();
         List<Merchandise> merchandise = merchandiseService.getAll();
         JSONObject res = new JSONObject();
         res.put("Merchandise", merchandise);
         return res;
+    }
+
+    @GetMapping("/testRedis")
+    public Object addToRedis(){
+        merchandiseService.importToRedis();
+        return "OK";
     }
 }
