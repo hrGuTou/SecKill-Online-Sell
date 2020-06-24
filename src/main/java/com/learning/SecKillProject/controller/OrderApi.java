@@ -9,11 +9,13 @@ import com.learning.SecKillProject.model.Merchandise;
 import com.learning.SecKillProject.model.OrderInfo;
 import com.learning.SecKillProject.model.Result;
 import com.learning.SecKillProject.model.User;
-import com.learning.SecKillProject.service.MerchandiseService;
+
 import com.learning.SecKillProject.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("api/order")
@@ -28,19 +30,18 @@ public class OrderApi {
 
     Result result;
 
-    @Autowired
-    MerchandiseService merchandiseService;
+
 
     @LoginRequired
     @PostMapping("")
-    public Object createOrder(@CurrentUser User user, @RequestBody Merchandise merchandise){
+    public Object createOrder(@CurrentUser User user, @RequestBody Merchandise merchandise) throws ExecutionException, InterruptedException {
         JSONObject res = new JSONObject();
 
-        Merchandise item = (Merchandise) redisTemplate.boundHashOps(Merchandise.class.getSimpleName()).get( Integer.toString( merchandise.getMerchandise_id()));
-        if(item == null){
-            res.put("error", "No such item");
-            return res;
-        }
+//        Merchandise item = (Merchandise) redisTemplate.boundHashOps(Merchandise.class.getSimpleName()).get( Integer.toString( merchandise.getMerchandise_id()));
+//        if(item == null){
+//            res.put("error", "Sold out");
+//            return res;
+//        }
 
          //TODO: 加锁
         // using mysql
@@ -55,8 +56,19 @@ public class OrderApi {
 //        }
         //
 
+
+//        OrderInfo order = (OrderInfo) redisTemplate.boundHashOps(OrderInfo.class.getSimpleName()).get(Integer.toString(user.getUserId()));
+//        if(order != null){
+//            //重复下单
+//            res.put("error", "Already placed order");
+//        }
+
+
+
         //using cache
+
         result = orderService.saveOrder(user, merchandise);
+
         if(result.isSuccess()){
             res.put("success", result.getMessage());
         }else{
